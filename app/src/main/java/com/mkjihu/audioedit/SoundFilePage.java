@@ -1,42 +1,14 @@
 package com.mkjihu.audioedit;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import com.androidquery.AQuery;
-import com.cokus.wavelibrary.view.WaveSurfaceView;
-import com.cokus.wavelibrary.view.WaveformView;
-
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.res.AssetFileDescriptor;
-import android.content.res.AssetManager;
 import android.graphics.PixelFormat;
-import android.media.AudioFormat;
-import android.media.AudioManager;
 import android.media.AudioTrack;
-import android.media.MediaCodec;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -45,11 +17,21 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.androidquery.AQuery;
+import com.cokus.wavelibrary.view.WaveSurfaceView;
+import com.cokus.wavelibrary.view.WaveformView;
 import com.jaygoo.widget.RangeSeekBar.OnRangeChangedListener;
 import com.mkjihu.audioedit.Presenter.SoundFilePresenter;
 import com.mkjihu.audioedit.obj.DialogBox;
-import com.mkjihu.audioedit.utils.*;
+import com.mkjihu.audioedit.utils.SamplePlayer;
+import com.mkjihu.audioedit.utils.SongMetadataReader;
+import com.mkjihu.audioedit.utils.SoundFile;
 import com.mkjihu.audioedit.view.RangeSeekBar2;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 

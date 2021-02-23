@@ -10,7 +10,6 @@ import com.mkjihu.audioedit.view.RangeSeekBar2;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,8 +17,10 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 
+import androidx.appcompat.app.AppCompatActivity;
 
-public class AudioEditPage extends AppCompatActivity{
+
+public class AudioEditPage extends AppCompatActivity {
 
 	
 	public RangeSeekBar<Integer> seekbar1;

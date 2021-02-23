@@ -4,11 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.mkjihu.audioedit.MainActivity" >
+    tools:context="com.mkjihu.audioedit.MainActivity">
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@color/colorPrimary" >
+        android:background="@color/colorPrimary">
 
         <ImageView
             android:id="@+id/imageView1"
@@ -26,23 +27,21 @@
             android:text="可讀音頻列表"
             android:textColor="#FFFFFF"
             android:textSize="16sp" />
-
     </FrameLayout>
-    <android.support.v4.widget.SwipeRefreshLayout
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/mSwipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
-		<android.support.v7.widget.RecyclerView
-		    
-    		android:id="@+id/recycler_view"
-    		android:layout_width="match_parent"
-    		android:layout_height="match_parent"
-    		android:clipToPadding="false"
-    		android:scrollbarStyle="outsideOverlay"
-    		android:scrollbars="vertical" >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical">
 
-		</android.support.v7.widget.RecyclerView>
-	</android.support.v4.widget.SwipeRefreshLayout>
-    
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>

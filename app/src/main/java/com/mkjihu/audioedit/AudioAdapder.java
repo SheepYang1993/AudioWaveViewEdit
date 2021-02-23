@@ -3,21 +3,22 @@ package com.mkjihu.audioedit;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-import com.jakewharton.rxbinding2.view.RxView;
-
-import android.content.Context;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import io.reactivex.functions.Consumer;
 
-public class AudioAdapder extends RecyclerView.Adapter<ViewHolder>{
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.jakewharton.rxbinding4.view.RxView;
+
+import io.reactivex.rxjava3.functions.Consumer;
+
+
+public class AudioAdapder extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 	
 	private ArrayList<AudioItem> audioItems;
 	private MainActivity activity;
@@ -37,7 +38,7 @@ public class AudioAdapder extends RecyclerView.Adapter<ViewHolder>{
 	}
 
 	@Override
-	public void onBindViewHolder(ViewHolder arg0, int arg1) {
+	public void onBindViewHolder(RecyclerView.ViewHolder arg0, int arg1) {
 		ItemView indexItem = (ItemView)arg0;
 		if(getItemCount()>0)  {
 			indexItem.SetData(arg1);
@@ -45,12 +46,12 @@ public class AudioAdapder extends RecyclerView.Adapter<ViewHolder>{
 	}
 
 	@Override
-	public ViewHolder onCreateViewHolder(ViewGroup arg0, int arg1) {
+	public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup arg0, int arg1) {
 		//產生View
 		return new ItemView(mLayoutInflater.inflate(R.layout.item_audio1,arg0, false));
 	}
 	
-	public class ItemView extends ViewHolder
+	public class ItemView extends RecyclerView.ViewHolder
 	{
 		private LinearLayout ad_lay;
 		private ImageView ad_image;

@@ -1,15 +1,18 @@
 package com.mkjihu.audioedit.view;
+
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.util.AttributeSet;
-import android.widget.TextView;
+
+import androidx.appcompat.widget.AppCompatTextView;
+
 import java.text.DecimalFormat;
 
-public class Chronometer extends TextView {
+public class Chronometer extends AppCompatTextView {
     @SuppressWarnings("unused")
-	private static final String TAG = "Chronometer";
+    private static final String TAG = "Chronometer";
 
     public interface OnChronometerTickListener {
 
@@ -25,17 +28,17 @@ public class Chronometer extends TextView {
     private static final int TICK_WHAT = 2;
 
     private long timeElapsed;
-    
+
     public Chronometer(Context context) {
-        this (context, null, 0);
+        this(context, null, 0);
     }
 
     public Chronometer(Context context, AttributeSet attrs) {
-        this (context, attrs, 0);
+        this(context, attrs, 0);
     }
 
     public Chronometer(Context context, AttributeSet attrs, int defStyle) {
-        super (context, attrs, defStyle);
+        super(context, attrs, defStyle);
 
         init();
     }
@@ -82,45 +85,45 @@ public class Chronometer extends TextView {
 
     @Override
     protected void onDetachedFromWindow() {
-        super .onDetachedFromWindow();
+        super.onDetachedFromWindow();
         mVisible = false;
         updateRunning();
     }
 
     @Override
     protected void onWindowVisibilityChanged(int visibility) {
-        super .onWindowVisibilityChanged(visibility);
+        super.onWindowVisibilityChanged(visibility);
         mVisible = visibility == VISIBLE;
         updateRunning();
     }
 
     private synchronized void updateText(long now) {
         timeElapsed = now - mBase;
-        
+
         DecimalFormat df = new DecimalFormat("00");
-        
-        int hours = (int)(timeElapsed / (3600 * 1000));
-        int remaining = (int)(timeElapsed % (3600 * 1000));
-        
-        int minutes = (int)(remaining / (60 * 1000));
-        remaining = (int)(remaining % (60 * 1000));
-        
-        int seconds = (int)(remaining / 1000);
-        remaining = (int)(remaining % (1000));
-        
-        int milliseconds = (int)(((int)timeElapsed % 1000) / 10);
-        
+
+        int hours = (int) (timeElapsed / (3600 * 1000));
+        int remaining = (int) (timeElapsed % (3600 * 1000));
+
+        int minutes = (int) (remaining / (60 * 1000));
+        remaining = (int) (remaining % (60 * 1000));
+
+        int seconds = (int) (remaining / 1000);
+        remaining = (int) (remaining % (1000));
+
+        int milliseconds = (int) (((int) timeElapsed % 1000) / 10);
+
         String text = "";
-        
+
         if (hours > 0) {
-        	text += df.format(hours) + ":";
+            text += df.format(hours) + ":";
         }
-        
-       	text += df.format(minutes) + ":";
-       	text += df.format(seconds) + ":";
-       	//text += Integer.toString(milliseconds);
-       	text +=	String.format("%02d", milliseconds);
-       	
+
+        text += df.format(minutes) + ":";
+        text += df.format(seconds) + ":";
+        //text += Integer.toString(milliseconds);
+        text += String.format("%02d", milliseconds);
+
         setText(text);
     }
 
@@ -130,7 +133,7 @@ public class Chronometer extends TextView {
             if (running) {
                 updateText(SystemClock.elapsedRealtime());
                 dispatchChronometerTick();
-                mHandler.sendMessageDelayed(Message.obtain(mHandler,TICK_WHAT), 10);
+                mHandler.sendMessageDelayed(Message.obtain(mHandler, TICK_WHAT), 10);
             } else {
                 mHandler.removeMessages(TICK_WHAT);
             }
@@ -143,7 +146,7 @@ public class Chronometer extends TextView {
             if (mRunning) {
                 updateText(SystemClock.elapsedRealtime());
                 dispatchChronometerTick();
-                sendMessageDelayed(Message.obtain(this , TICK_WHAT),10);
+                sendMessageDelayed(Message.obtain(this, TICK_WHAT), 10);
             }
         }
     };
@@ -154,8 +157,8 @@ public class Chronometer extends TextView {
         }
     }
 
-	public long getTimeElapsed() {
-		return timeElapsed;
-	}
-    
+    public long getTimeElapsed() {
+        return timeElapsed;
+    }
+
 }

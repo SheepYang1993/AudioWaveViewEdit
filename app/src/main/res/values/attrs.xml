@@ -50,5 +50,4 @@
         <attr name="timeBgBorderSize" format="dimension" />
         <attr name="timeBgBorderRadius" format="dimension" />
     </declare-styleable>
-
 </resources>
